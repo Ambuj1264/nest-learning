@@ -10,6 +10,7 @@ import { EmployeeModule } from './api/employee/employee.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import typeorm from './api/config/typeorm';
 import { PassportModule } from '@nestjs/passport';
+import { BullModule } from '@nestjs/bull';
 @Module({
   imports: [
     ConfigModule.forRoot({
