@@ -6,6 +6,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 //hello world
+console.log('inventry entity');
+
 @Entity({ name: 'inventry' })
 export class Inventry extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'id' })

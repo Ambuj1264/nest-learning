@@ -22,6 +22,12 @@ import { PassportModule } from '@nestjs/passport';
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
     UsersModule,
     BookModule,
     InventryModule,
