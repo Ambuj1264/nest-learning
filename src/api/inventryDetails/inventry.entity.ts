@@ -5,6 +5,8 @@ import {
   Generated,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
+console.log('inventry entity');
 //hello world
 console.log('inventry entity');
 
