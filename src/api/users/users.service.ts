@@ -4,6 +4,8 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { ApiResponse } from 'src/utility/types';
 import { errorResponse, sucessResponse } from 'src/utility/commonfunction';
+import { InjectQueue } from '@nestjs/bull';
+import { Queue } from 'bull';
 // import jwt from 'jsonwebtoken';
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');

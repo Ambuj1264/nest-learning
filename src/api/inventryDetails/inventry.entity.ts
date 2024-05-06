@@ -8,6 +8,8 @@ import {
 
 console.log('inventry entity');
 //hello world
+console.log('inventry entity');
+
 @Entity({ name: 'inventry' })
 export class Inventry extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
