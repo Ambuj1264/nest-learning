@@ -2,6 +2,7 @@ require('dotenv').config();
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import rateLimit from 'express-rate-limit';
+import { ValidationPipe } from '@nestjs/common';
 const port: number = 3000;
 
 // function globalMiddelware(req : Request, res: Response, next: NextFunction) {
@@ -11,6 +12,7 @@ const port: number = 3000;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // app.use(globalMiddelware);
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.use(
     rateLimit({
       windowMs: 5 * 60 * 1000, // 10 minutes

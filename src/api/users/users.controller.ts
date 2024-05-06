@@ -4,12 +4,15 @@ import {
   Delete,
   Get,
   Param,
+  ParseUUIDPipe,
   Post,
   Put,
+  UsePipes,
 } from '@nestjs/common';
 import { ApiResponse } from 'src/utility/types';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
+import { UserData } from './dto/user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -19,18 +22,20 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<ApiResponse> {
+  @Get('/:id')
+  findOne(@Param('id', ParseUUIDPipe) id: string): Promise<ApiResponse> {
     return this.usersService.findOne(id);
   }
 
   @Post('/login')
   login(@Body() user: Partial<User>): Promise<ApiResponse> {
+    console.log(user, 'user');
     return this.usersService.login(user.email, user.password);
   }
 
   @Post('/add')
-  create(@Body() user: Partial<User>): Promise<ApiResponse> {
+  @UsePipes(UserData)
+  create(@Body() user: UserData): Promise<ApiResponse> {
     return this.usersService.create(user);
   }
 
